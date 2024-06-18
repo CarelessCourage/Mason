@@ -1,0 +1,13 @@
+//General logic for a page container
+.page {
+  padding-top: var(--space-familiar);
+  max-width: calc(100vw - var(--space-familiar));
+  width: 1000px;
+  margin: auto;
+}
+
+//Button platform
+button {
+  user-select: none;
+  height: var(--brick, auto);
+}
