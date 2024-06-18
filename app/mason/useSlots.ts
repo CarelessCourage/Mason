@@ -1,5 +1,5 @@
 import { type Component } from "vue"
-import { mason, fragments } from "~~/libraries/mason/store"
+import { mason, fragments } from "~/mason/store"
 
 const defaultSlots = {
   banner: fragments.banner, 

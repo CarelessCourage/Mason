@@ -1,41 +1,59 @@
 <script setup>
-const runtimeConfig = useRuntimeConfig()
-const colors = ['#f87171', '#fb923c', '#fbbf24', '#facc15', '#a3e635', '#4ade80', '#34d399', '#2dd4bf', '#22d3ee', '#38bdf8', '#60a5fa', '#818cf8', '#a78bfa', '#c084fc', '#e879f9', '#f472b6', '#fb7185']
-const color = useState('color', () => colors[Math.floor(Math.random() * colors.length)])
+import { fragments } from '~/mason/store'
 </script>
 
 <template>
-  <div class="centered">
-    <h1 :style="{ color }">{{ runtimeConfig.public.helloText }}</h1>
-    <NuxtLink to="/" external>refresh</NuxtLink>
+  <Type/>
+  <div class="test">
+    <InputButton>
+      click me
+    </InputButton>
+    <InputSlider>
+      title:
+    </InputSlider>
+    <InputCheckbox>
+      condition
+    </InputCheckbox>
   </div>
+
+  <div class="fragments u-panel">
+    <Frag 
+      v-if="fragments" v-for="(frag, name) in fragments"
+      :key="name" :is="frag" :name="name"
+    />
+  </div>
+
+  <BlockCard/>
+  <BlockCard/>
+  <BlockCard/>
+  <BlockCard/>
 </template>
 
 <style scoped>
-.centered {
-  position: absolute;
-  width: 100%;
-  text-align: center;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-h1 {
-  font-size: 32px;
-}
-@media (min-width: 768px) {
-  h1 {
-    font-size: 64px;
+.fragments {
+  display: flex;
+  gap: var(--space-familiar);
+  flex-direction: column;
+
+  background-color: var(--shade);
+  padding: var(--space-familiar);
+  margin-bottom: var(--space-seperate);
+  img {
+    max-height: 200px;
   }
 }
-a {
-  color: #888;
-  text-decoration: none;
-  font-size: 18px;
-}
-a:hover {
-  text-decoration: underline;
+
+.test {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  background-color: red;
+  min-height: 10em;
+
+
+  gap: var(--space-familiar);
+  padding: var(--space-seperate) 0px;
+
+  flex-direction: row;
 }
 </style>
